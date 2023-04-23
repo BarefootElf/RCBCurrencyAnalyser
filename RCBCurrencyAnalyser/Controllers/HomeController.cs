@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RCBCurrencyAnalyser.Domains;
 using RCBCurrencyAnalyser.Helpers;
 using RCBCurrencyAnalyser.Models;
 using System.Diagnostics;
@@ -15,7 +16,8 @@ namespace RCBCurrencyAnalyser.Controllers {
         }
 
         public IActionResult Index() {
-            //var xml = CbrAPIWorker.GetCurrencyCatalog(true);
+            var xml = CbrAPIWorker.GetCurrencyCatalog(true);
+            CurrenciesDomain.UpdateCurrencies(xml);
             //var xmlToday = CbrAPIWorker.GetCurrencyDaily(DateTime.Today);
             return View();
         }
