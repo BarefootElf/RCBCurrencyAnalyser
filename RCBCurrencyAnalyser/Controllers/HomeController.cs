@@ -16,9 +16,10 @@ namespace RCBCurrencyAnalyser.Controllers {
         }
 
         public IActionResult Index() {
-            var xml = CbrAPIWorker.GetCurrencyCatalog(true);
-            CurrenciesDomain.UpdateCurrencies(xml);
-            //var xmlToday = CbrAPIWorker.GetCurrencyDaily(DateTime.Today);
+            //var xml = CbrAPIWorker.GetCurrencyCatalog(true);
+            //CurrenciesDomain.UpdateCurrencies(xml);
+            var xmlToday = CbrAPIWorker.GetCurrencyDaily(DateTime.Today);
+            CurrenciesDomain.UpdateCurrenciesData(xmlToday);
             return View();
         }
 

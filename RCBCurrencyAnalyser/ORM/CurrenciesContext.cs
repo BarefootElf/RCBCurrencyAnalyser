@@ -32,9 +32,11 @@ public partial class CurrenciesContext : DbContext
 
         modelBuilder.Entity<CurrencyDatum>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(e => e.Id).HasName("CurrencyData_pkey");
 
-            entity.HasOne(d => d.Currency).WithMany()
+            entity.Property(e => e.Id).ValueGeneratedNever();
+
+            entity.HasOne(d => d.Currency).WithMany(p => p.CurrencyData)
                 .HasForeignKey(d => d.CurrencyId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("CurrencyId_Currencies_Id");

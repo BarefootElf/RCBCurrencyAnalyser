@@ -19,5 +19,7 @@ public partial class CurrencyDatum
 
     public float Value { get; set; }
 
+    public long Id { get; set; }
+
     public virtual Currency Currency { get; set; } = null!;
 }

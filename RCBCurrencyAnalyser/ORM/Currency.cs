@@ -14,4 +14,6 @@ public partial class Currency
     public int Nominal { get; set; }
 
     public string ParentCode { get; set; } = null!;
+
+    public virtual ICollection<CurrencyDatum> CurrencyData { get; set; } = new List<CurrencyDatum>();
 }
